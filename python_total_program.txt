@@ -1,0 +1,797 @@
+1. Write a program to perform following operations on list
+ 
+1. Sum all the items in a list.
+ 
+2. Get the largest number from a list.
+ 
+3. Remove duplicates from a list.
+ 
+4. Separate positive and negative number from a list.
+ 
+5. Filter even and odd number from a list.
+ 
+Ans:-
+def sum_list(lst):
+    return sum(lst)
+ 
+def get_largest(lst):
+    return max(lst)
+ 
+def remove_duplicates(lst):
+    return list(set(lst))
+ 
+def separate_positive_negative(lst):
+    positive = [num for num in lst if num > 0]
+    negative = [num for num in lst if num < 0]
+    return positive, negative
+ 
+def filter_even_odd(lst):
+    even = [num for num in lst if num % 2 == 0]
+    odd = [num for num in lst if num % 2 != 0]
+    return even, odd
+ 
+# Example list
+my_list = [1, 2, 3, 4, 5, 5, 6, -7, -8, -9]
+ 
+# Sum of all items
+print("Sum of all items:", sum_list(my_list))
+ 
+# Largest number
+print("Largest number:", get_largest(my_list))
+ 
+# Remove duplicates
+print("List after removing duplicates:", remove_duplicates(my_list))
+ 
+# Separate positive and negative numbers
+positive_nums, negative_nums = separate_positive_negative(my_list)
+print("Positive numbers:", positive_nums)
+print("Negative numbers:", negative_nums)
+ 
+# Filter even and odd numbers
+even_nums, odd_nums = filter_even_odd(my_list)
+print("Even numbers:", even_nums)
+print("Odd numbers:", odd_nums)
+__________________________________________________________________________________________________________________________
+ 
+ 2. Write a program to perform following operations on string
+ 
+1. Reverse string.
+ 
+2. Count vowels and consonants in a string.
+ 
+3. Count the number of letters in a word.
+ 
+4. Convert lower letter to upper and upper letter to lower in a string.
+ 
+5. Count lower, upper, numeric and special characters in a string.
+ 
+Ans:-
+import string
+ 
+def reverse_string(s):
+    return s[::-1]
+ 
+def count_vowels_consonants(s):
+    vowels = 0
+    consonants = 0
+    for char in s:
+        if char.lower() in 'aeiou':
+            vowels += 1
+        elif char.isalpha():
+            consonants += 1
+    return vowels, consonants
+ 
+def count_letters_in_word(word):
+    return len(word)
+ 
+def convert_case(s):
+    return s.swapcase()
+ 
+def count_characters(s):
+    lower_count = sum(1 for char in s if char.islower())
+    upper_count = sum(1 for char in s if char.isupper())
+    numeric_count = sum(1 for char in s if char.isdigit())
+    special_count = sum(1 for char in s if char in string.punctuation)
+    return lower_count, upper_count, numeric_count, special_count
+ 
+# Example string
+my_string = "Hello, World! 123"
+ 
+# Reverse string
+print("Reversed string:", reverse_string(my_string))
+ 
+# Count vowels and consonants
+vowels_count, consonants_count = count_vowels_consonants(my_string)
+print("Number of vowels:", vowels_count)
+print("Number of consonants:", consonants_count)
+ 
+# Count the number of letters in a word
+word = "Hello"
+print("Number of letters in the word '{}': {}".format(word, count_letters_in_word(word)))
+ 
+# Convert case
+print("String after case conversion:", convert_case(my_string))
+ 
+# Count characters
+lower_count, upper_count, numeric_count, special_count = count_characters(my_string)
+print("Number of lowercase characters:", lower_count)
+print("Number of uppercase characters:", upper_count)
+print("Number of numeric characters:", numeric_count)
+print("Number of special characters:", special_count)
+ 
+_________________________________________________________________________________________________________________________________________
+ 3. Write a program to perform following operations on dictionary
+ 
+1. Check whether a given key exists in a dictionary or not.
+ 
+2. Iterate over dictionary items using for loop.
+ 
+3. Concatenate two dictionaries to create one.
+ 
+4. Sum all the values of a dictionary.
+ 
+5. Get the maximum and minimum value of dictionary.
+ 
+Ans:-
+def check_key_exists(dictionary, key):
+    return key in dictionary
+ 
+def iterate_over_items(dictionary):
+    for key, value in dictionary.items():
+        print("Key:", key, "Value:", value)
+ 
+def concatenate_dictionaries(dict1, dict2):
+    return {**dict1, **dict2}
+ 
+def sum_dictionary_values(dictionary):
+    return sum(dictionary.values())
+ 
+def get_max_min_value(dictionary):
+    if not dictionary:
+        return None, None
+    return max(dictionary.values()), min(dictionary.values())
+ 
+# Example dictionaries
+dict1 = {'a': 1, 'b': 2, 'c': 3}
+dict2 = {'d': 4, 'e': 5, 'f': 6}
+ 
+# Check if key exists
+key_to_check = 'b'
+print("Does '{}' exist in the dictionary?".format(key_to_check), check_key_exists(dict1, key_to_check))
+ 
+# Iterate over dictionary items
+print("Iterating over dictionary items:")
+iterate_over_items(dict1)
+ 
+# Concatenate dictionaries
+concatenated_dict = concatenate_dictionaries(dict1, dict2)
+print("Concatenated dictionary:", concatenated_dict)
+ 
+# Sum all values of dictionary
+print("Sum of values in dictionary:", sum_dictionary_values(dict1))
+ 
+# Get maximum and minimum value of dictionary
+max_value, min_value = get_max_min_value(dict1)
+print("Maximum value:", max_value)
+print("Minimum value:", min_value)
+ 
+__________________________________________________________________________________________________________________________________
+Q 3. Write a program to print
+            1. First 10 natural numbers
+ 
+            2. First 10 even numbers in reverse order
+ 
+            3. Table of a number accepted from user
+ 
+            4. First 10 prime numbers
+ 
+             5. Sum of digits of numbers from 101 to 130
+Ans:-
+def print_first_10_natural_numbers():
+    print("First 10 natural numbers:")
+    for i in range(1, 11):
+        print(i, end=" ")
+    print()
+ 
+def print_first_10_even_numbers_reverse():
+    print("First 10 even numbers in reverse order:")
+    for i in range(20, 0, -2):
+        print(i, end=" ")
+    print()
+ 
+def print_table_of_number(num):
+    print("Table of", num, ":")
+    for i in range(1, 11):
+        print(num, "x", i, "=", num*i)
+ 
+def is_prime(n):
+    if n <= 1:
+        return False
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+ 
+def print_first_10_prime_numbers():
+    print("First 10 prime numbers:")
+    count = 0
+    num = 2
+    while count < 10:
+        if is_prime(num):
+            print(num, end=" ")
+            count += 1
+        num += 1
+    print()
+ 
+def sum_of_digits_range(start, end):
+    total_sum = 0
+    for num in range(start, end + 1):
+        total_sum += sum(int(digit) for digit in str(num))
+    return total_sum
+ 
+# Task 1
+print_first_10_natural_numbers()
+ 
+# Task 2
+print_first_10_even_numbers_reverse()
+ 
+# Task 3
+number = int(input("Enter a number to print its table: "))
+print_table_of_number(number)
+ 
+# Task 4
+print_first_10_prime_numbers()
+ 
+# Task 5
+sum_of_digits = sum_of_digits_range(101, 130)
+print("Sum of digits of numbers from 101 to 130:", sum_of_digits)
+ 
+________________________________
+Q 4. Write a program to print following patterns
+1
+2 3
+4 5 6
+7 8 9 10 
+ 
+rows = int(input("Enter the number of rows : "))
+cnt = 1
+for i in range(1, rows+1):
+    for j in range(i,i+i):
+        print(cnt,end=" ")
+        cnt += 1
+    print()
+ 
+   *
+  * *
+ * * *
+* * * *
+* * * * *
+ 
+ 
+rows = int(input("Enter Number of Rows : "))
+totalSpaces = rows - 1
+for i in range(1, rows+1):
+    for space in range(0, totalSpaces):
+        print(end=" ")
+    totalSpaces -= 1
+ 
+    for j in range(i, i+i):
+        print("* ",end="")
+    print()
+ 
+ 3)
+ 
+rows = int(input("Enter number of rows : "))
+for i in range(rows+1):
+    for j in range(rows-i):
+        print(' ', end="")
+    C = 1
+    for j in range(1, i+1):
+        print(C, ' ', sep='', end='')
+        C = C * (i - j) // j
+    print()
+ 
+ 4>
+ 
+rows = int(input("Enter the number of rows: "))
+letter = 65
+for i in range(rows):
+  for k in range(rows - i - 1):
+    print(" ", end="")
+  print(chr(letter + i), end=" ")
+  if i > 0:
+    for k in range(2 * i - 1):
+      print(" ", end="")
+    print(chr(letter + i), end=" ")
+  print()
+for i in range(rows - 2, -1, -1):
+  for k in range(rows - i - 1):
+    print(" ", end="")
+  print(chr(letter + i), end=" ")
+  if i > 0:
+    for k in range(2 * i - 1):
+      print(" ", end="")
+    print(chr(letter + i), end=" ")
+  print()
+ 
+_______________________________________________________________________________________________________________________________________________________
+ 
+5. Write a program to demonstrate Nested function 
+def outer_function():
+  """This is an outer function"""
+  message = "Hello from the outer function"
+  def inner_function():
+  """This is an inner function"""
+  print(message + " and hello from the inner function")
+ inner_function()
+outer_function()
+__________________________________________________________________________________________________________________________________________________________
+ 
+ 
+6. Write a program to calculate factorial of a given number using recursion .
+def factorial(n):
+  """This function calculates the factorial of a number"""
+  if n == 0:
+    return 1
+  else:
+    return n * factorial(n-1)
+ 
+# Get a number from the user
+number = int(input("Enter a number: "))
+# Calculate the factorial
+result = factorial(number)
+# Print the result
+print(f"The factorial of {number} is {result}")
+________________________________________________________________________________________________________________________________________________________
+ 
+ 
+7. Write a program to create decorators and generators.
+Define a decorator that adds a prefix to a function's name
+def prefix_decorator(prefix):
+  def decorator_function(func):
+    def wrapper(*args, **kwargs):
+      print(f"Calling function with prefix {prefix}")
+      return func(*args, **kwargs)
+    return wrapper
+  return decorator_function
+# Define a simple function to decorate
+def say_hello(name):
+  print(f"Hello, {name}!")
+# Decorate the say_hello function with the prefix_decorator
+say_hello_with_prefix = prefix_decorator("IMPORTANT")(say_hello)
+# Call the decorated function
+say_hello_with_prefix("Alice")
+ 
+_________________________________________________________________________________________________________________________________________________-
+
+8. Create two different user defined modules and access respective functions from one file to another .
+ 
+Ans:-
+****Main Function-1****
+# Import the modules
+from math_functions import add, subtract
+from string_functions import greet, to_uppercase
+ 
+# Use functions from the modules
+result_add = add(5, 3)
+result_subtract = subtract(10, 2)
+greeting = greet("Bob")
+uppercase_text = to_uppercase("hello world")
+ 
+# Print the results
+print(f"Addition result: {result_add}")
+print(f"Subtraction result: {result_subtract}")
+print(greeting)
+print(f"Uppercase text: {uppercase_text}")
+ 
+ 
+****Main Function-2****
+def add(x, y):
+  """This function adds two numbers"""
+  return x + y
+ 
+def subtract(x, y):
+  """This function subtracts two numbers"""
+  return x - y
+ 
+ 
+****String Function****
+def greet(name):
+  """This function returns a greeting message"""
+  return f"Hello, {name}!"
+ 
+def to_uppercase(text):
+  """This function converts a string to uppercase"""
+  return text.upper()
+__________________________________________________________________________________________________________________________________________
+ 
+9. write a program to access built in functions available in math, random and datetime modules.
+ 
+Ans:-
+ 
+import math
+import random
+import datetime
+# Access functions from the math module
+print(f"Square root of 16: {math.sqrt(16)}")
+print(f"Ceiling of 3.14: {math.ceil(3.14)}")
+# Access functions from the random module
+print(f"Random integer between 1 and 10: {random.randint(1, 10)}")
+print(f"Random float between 0 and 1: {random.random()}")
+# Access functions from the datetime module
+now = datetime.datetime.now()
+print(f"Current date and time: {now}")
+print(f"Year: {now.year}")
+print(f"Month: {now.month}")
+print(f"Day: {now.day}")
+ 
+________________________________________________________________________________________________________________________________________
+ 
+10. Write Python program to demonstrate the following:
+ 1. SyntaxError
+# This will raise a SyntaxError due to the missing colon in the if statement
+# Corrected: if condition:
+print("Demonstrating SyntaxError:")
+try:
+    		if True
+      	print("Condition is True")
+except SyntaxError as e:
+   	        print("SyntaxError:", e)
+print()
+ 
+ 
+ 
+ 
+ 2. TypeError
+# This will raise a TypeError due to trying to concatenate an integer with a string
+print("Demonstrating TypeError:")
+try:
+   		 result = "5" + 10
+except TypeError as e:
+   	 print("TypeError:", e)
+print()
+ 
+ 
+ 
+3. IndexError
+# This will raise an IndexError due to accessing an index that doesn't exist in the list
+print("Demonstrating IndexError:")
+try:
+    		my_list = [1, 2, 3]
+    		print(my_list[3])
+except IndexError as e:
+    	    print("IndexError:", e)
+print()
+ 
+ 
+4. ValueError
+# This will raise a ValueError due to trying to convert a string that cannot be converted to an integer
+print("Demonstrating ValueError:")
+try:
+   		 num = int("abc")
+except ValueError as e:
+    		print("ValueError :",e)
+ 
+ 
+ 
+ 5. ZeroDivisionError
+# This will raise a ZeroDivisionError due to dividing by zero
+print("Demonstrating ZeroDivisionError:")
+try:
+    		result = 10 / 0
+except ZeroDivisionError as e:
+   		 print("ZeroDivisionError:", e)
+print()
+//OUTPUT//
+ 
+  6. FileNotFound
+# This will raise a FileNotFoundError due to trying to open a file that doesn't exist
+print("Demonstrating FileNotFoundError:")
+try:
+   		 with open("nonexistent_file.txt", "r") as file:
+       		     contents = file.read()
+except FileNotFoundError as e:
+   		 print("FileNotFoundError:", e)
+print()
+_________________________________________________________________________________________________________________________________________________
+ 
+11. Write Python program to raise user defined exception.
+class MyCustomException(Exception):
+    def _init_(self, message="This is a custom exception!"):
+        self.message = message
+        super()._init_(self.message)
+ 
+# Function to demonstrate raising the custom exception
+def raise_custom_exception():
+    # Raise the custom exception
+    raise MyCustomException()
+ 
+# Demonstrate raising the custom exception
+try:
+    raise_custom_exception()
+except MyCustomException as e:
+    print("Caught custom exception:", e)
+________________________________________________________________________________________________________________________________________
+ 
+ 
+12. Write Python program to demonstrate the use of try, except and finally block.
+def divide(x, y):
+    try:
+        result = x / y
+    except ZeroDivisionError:
+        print("Error: Division by zero!")
+    else:
+        print("Result:", result)
+    finally:
+        print("Finally block executed.")
+ 
+# Test the function with different inputs
+print("Test Case 1:")
+divide(10, 2)
+ 
+print("\nTest Case 2:")
+divide(10, 0)
+ 
+print("\nTest Case 3:")
+divide("10", 2)
+________________________________________________________________________________________________________________________________________
+ 
+13. Write Python program to demonstrate default except block.
+ def divide(x, y):
+    try:
+        result = x / y
+    except ZeroDivisionError:
+        print("Error: Division by zero!")
+    except:
+        print("An error occurred!")
+    else:
+        print("Result:", result)
+    finally:
+        print("Finally block executed.")
+ 
+# Test the function with different inputs
+print("Test Case 1:")
+divide(10, 2)
+ 
+print("\nTest Case 2:")
+divide(10, 0)
+ 
+print("\nTest Case 3:")
+divide("10", 2)
+__________________________________________________________________________________________________________________________________
+ 
+ 
+14. Write Python program to handle multiple exceptions in single except block
+def divide(x, y):
+    try:
+        result = x / y
+    except (ZeroDivisionError, TypeError) as e:
+        print("An error occurred:", e)
+    else:
+        print("Result:", result)
+    finally:
+        print("Finally block executed.")
+ 
+# Test the function with different inputs
+print("Test Case 1:")
+divide(10, 2)
+ 
+print("\nTest Case 2:")
+divide(10, 0)
+ 
+print("\nTest Case 3:")
+divide("10", 2)
+________________________________________________________________________________________________________________________________
+ 
+ 
+15. Write a program to read the contents of file and perform following operations
+     a) display number of words
+     b) display number of characters
+     c) display number of vowels
+     d) display number of lines
+     e) reverse each word and display it
+ 
+ 
+  def count_words(text):
+    words = text.split()
+    return len(words)
+ 
+def count_characters(text):
+    return len(text)
+ 
+def count_vowels(text):
+    vowels = "aeiouAEIOU"
+    count = 0
+    for char in text:
+        if char in vowels:
+            count += 1
+    return count
+ 
+def count_lines(text):
+    lines = text.split('\n')
+    return len(lines)
+ 
+def reverse_words(text):
+    words = text.split()
+    reversed_words = [word[::-1] for word in words]
+    return ' '.join(reversed_words)
+ 
+# Read contents from file
+file_path = 'text.txt'  # Replace with your file path
+try:
+    with open(file_path, 'r') as file:
+        file_contents = file.read()
+except FileNotFoundError:
+    print("File not found.")
+else:
+    # Perform operations
+    num_words = count_words(file_contents)
+    num_characters = count_characters(file_contents)
+    num_vowels = count_vowels(file_contents)
+    num_lines = count_lines(file_contents)
+    reversed_text = reverse_words(file_contents)
+ 
+    # Display results
+    print("Number of words:", num_words)
+    print("Number of characters:", num_characters)
+    print("Number of vowels:", num_vowels)
+    print("Number of lines:", num_lines)
+    print("Reversed words:\n", reversed_text)
+_______________________________________________________________________________________________________________________________________
+ 
+ 
+16.	Write a program to perform CRUD operations using mongoDB shell and pycharm IDE
+C-Create, R-Read, U-Update, D-Delete
+ 
+Ans:-
+> use mydatabase
+> db.createCollection("mycollection")
+ 
+ 
+> db.mycollection.insertOne({	name: "John", age: 30 })
+ 
+ 
+> db.mycollection.find()	
+ 
+ 
+> db.mycollection.updateOne({	name: "John" }, { $set: { age: 35 } })
+ 
+ 
+> db.mycollection.deleteOne({	name: "John" })
+ 
+ 
+USING IDE :
+from pymongo import MongoClient
+ 
+# Connect to MongoDB
+client = MongoClient('localhost', 27017)
+db = client['mydatabase']
+collection = db['mycollection']
+ 
+# Create
+document = {'name': 'Alice', 'age': 25}
+collection.insert_one(document)
+ 
+# Read
+documents = collection.find()
+for doc in documents:
+print(doc)
+ 
+# Update
+collection.update_one({'name': 'Alice'}, {'$set': {'age': 30}})
+ 
+# Delete
+collection.delete_one({'name': 'Alice'})
+ 
+# Close connection
+client.close()
+__________________________________________________________________________________________________________________________________
+ 
+17.	Create a pandas dataFrame using mtcars.csv CSV file and perform a following
+a)	Display column names
+b)	Display 5th to 10th rows
+c)	Display 4th to 7th columns
+d)	Display no of rows and no of columns
+ 
+Ans:-
+ 
+import pandas as pd
+ 
+# Load the CSV file into a DataFrame
+df = pd.read_csv('mtcars.csv')
+ 
+# Display column names
+print("Column names:")
+print(df.columns)
+ 
+# Display 5th to 10th rows
+print("\n5th to 10th rows:")
+print(df.iloc[4:10])
+ 
+# Display 4th to 7th columns
+print("\n4th to 7th columns:")
+print(df.iloc[:, 3:7])
+ 
+# Display number of rows and number of columns
+num_rows, num_columns = df.shape
+print(f"\nNumber of rows: {num_rows}")
+print(f"Number of columns: {num_columns}")
+__________________________________________________________________________________________________________________________________
+ 
+18.	Use the given file named cricket.csv and perform the following operations:
+1.	Read the file in DataFrame
+2.	List the name of cricketer and their respective runs
+3.	Find total wickets taken by them
+4.	Find average of catches taken
+5.	Find the name of wicketkeeper
+6.	Print the name of bowler who played highest number of matches
+7.	Find average of all the bowlers
+8.	Find name of the bowler with least bowling average
+9.	Draw the bar chart of matches against number of runs scored
+10.	Sort and print information about players by ascending order of runs
+11.	Print the names of players whose wickets are greater than matches
+ 
+Ans:-
+ 
+import pandas as pd
+import matplotlib.pyplot as plt
+ 
+# 1. Read the file into a DataFrame
+df = pd.read_csv('cricket.csv')
+ 
+# 2. List the name of cricketer and their respective runs
+print("Name of cricketer and their respective runs:")
+print(df[['Name', 'Runs']])
+ 
+# 3. Find total wickets taken by them
+total_wickets = df['Wickets'].sum()
+print("\nTotal wickets taken by all players:", total_wickets)
+ 
+# 4. Find average of catches taken
+average_catches = df['Catches'].mean()
+print("\nAverage of catches taken:", average_catches)
+ 
+# 5. Find the name of wicketkeeper
+wicketkeeper = df.loc[df['Role'] == 'Wicketkeeper', 'Name'].values[0]
+print("\nName of wicketkeeper:", wicketkeeper)
+ 
+# 6. Print the name of bowler who played highest number of matches
+max_matches = df['Matches'].max()
+bowler_with_most_matches = df.loc[df['Matches'] == max_matches,
+'Name'].values[0]
+print("\nName of bowler with highest number of matches played:",
+bowler_with_most_matches)
+ 
+# 7. Find average of all the bowlers
+average_bowlers = df.loc[df['Role'] == 'Bowler', 'Average'].mean()
+print("\nAverage of all the bowlers:", average_bowlers)
+ 
+# 8. Find name of the bowler with least bowling average
+min_average_bowler = df.loc[df['Role'] == 'Bowler',
+'Name'].iloc[df.loc[df['Role'] == 'Bowler', 'Average'].idxmin()]
+print("\nName of the bowler with least bowling average:",
+min_average_bowler)
+ 
+# 9. Draw the bar chart of matches against number of runs scored
+df.plot(kind='bar', x='Name', y='Runs', figsize=(10, 6))
+plt.xlabel('Name')
+plt.ylabel('Runs')
+plt.title('Matches vs Runs Scored')
+plt.show()
+ 
+# 10. Sort and print information about players by ascending order of runs
+sorted_df = df.sort_values(by='Runs')
+print("\nInformation about players sorted by ascending order of runs:")
+print(sorted_df)
+ 
+# 11. Print the names of players whose wickets are greater than matches
+players_with_more_wickets_than_matches = df.loc[df['Wickets'] >
+df['Matches'], 'Name'].tolist()
+print("\nNames of players whose wickets are greater than matches:",
+players_with_more_wickets_than_matches)

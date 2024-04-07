@@ -1,0 +1,651 @@
+1. Write an HTML code: To Design the Student Registration form for applying MCA CET. Consider all aspects and do the necessary validations
+for it.
+
+
+register.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MH MCA CET</title>
+<link rel="stylesheet" href="register.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+</head>
+<body>
+<div class="register">
+<form action="">
+<h2>Register</h2>
+<div class="input">
+<label for="fullName">Full Name (As per SSC/HSC marksheet) *</label>
+<input type="text" name="fullName" id="fullName" required>
+<span class="note">In case your full name only consists of one word (without surname), please
+enter your name as<br>"NAME." (Name&lt;space&gt;"Dot").</space></span>
+</div>
+<div class="input">
+<label for="email">Email *</label>
+<input type="email" name="email" id="email" required>
+</div>
+<div class="input">
+<label for="password">Password *</label>
+<input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[AZ]).{8,16}" required>
+<span class="note">Password must be at least 8 characters long and include at least one
+uppercase letter, one lowercase letter, and one number. The maximum password character leght cannot
+exceed 16 characters.</span>
+</div>
+<div class="input">
+<label for="confirmPassword">Confirm Password *</label>
+<input type="password" name="confirmPassword" id="confirmPassword" required>
+</div>
+<div class="input">
+<label for="dateOfBirth">Date of Birth *</label>
+<input type="date" name="dateOfBirth" id="dateOfBirth" required>
+</div>
+<span class="login">Already registered? Login</span>
+<div class="input">
+<button type="submit">Register</button>
+</div>
+</form>
+</div>
+</body>
+</html>
+register.css
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Poppins", sans-serif;
+}
+body {
+background-color: #555;
+padding: 5em 0;
+}
+.register {
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+}
+form {
+background-color: #fff;
+max-width: 60%;
+padding: 1em;
+border-radius: 10px;
+}
+h2 {
+padding-bottom: 0.5em;
+}
+.note {
+margin-top: 0.1em;
+margin-bottom: 0.5em;
+padding: 0 0.3em;
+}
+.input {
+width: 100%;
+margin-top: 0.5em;
+margin-bottom: 0.5em;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+input {
+width: 100%;
+font-size: 1rem;
+margin-top: 0.5em;
+margin-bottom: 0.5em;
+padding: 0.8em;
+border-radius: 10px;
+border: 2px solid #888;
+outline: none;
+}
+.login {
+display: block;
+margin-top: 0.6em;
+margin-bottom: 1em;
+padding: 0.2em 0.2em;
+}
+button {
+width: 100%;
+padding: 0.8em;
+font-size: 1rem;
+background-color: #555;
+color: #fff;
+border-radius: 10px;
+}
+______________________________________________________________________________________________________________________________________________________
+______________________________________________________________________________________________________________________________________________________
+
+2. Write HTML code for following:
+a) Create Menu for Video Songs by artists category (Any 3 Artist) and display relevant video of that artist on web page
+b) Create Menu for Audio Songs by artists category (Any 3 Artist) and display relevant Audio of that artist on web page
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Music Library</title>
+</head>
+<body>
+<h1>Welcome to our Music Library</h1>
+<h2>Video Songs</h2>
+<ul id="video-menu">
+<li><a href="#" onclick="displayVideo('artist1')">Artist 1</a></li>
+<li><a href="#" onclick="displayVideo('artist2')">Artist 2</a></li>
+<li><a href="#" onclick="displayVideo('artist3')">Artist 3</a></li>
+</ul>
+<div id="video-display">
+</div>
+<h2>Audio Songs</h2>
+<ul id="audio-menu">
+<li><a href="#" onclick="displayAudio('artist1')">Artist 1</a></li>
+<li><a href="#" onclick="displayAudio('artist2')">Artist 2</a></li>
+<li><a href="#" onclick="displayAudio('artist3')">Artist 3</a></li>
+</ul>
+<div id="audio-display">
+</div>
+<script>
+function displayVideo(artist) {
+var videoDisplay = document.getElementById('video-display');
+videoDisplay.innerHTML = '';
+switch(artist) {
+case 'artist1':
+videoDisplay.innerHTML = '<iframe width="560" height="315"
+src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allow="accelerometer; autoplay;
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+break;
+case 'artist2':
+videoDisplay.innerHTML = '<iframe width="560" height="315"
+src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allow="accelerometer; autoplay;
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+break;
+case 'artist3':
+videoDisplay.innerHTML = '<iframe width="560" height="315"
+src="https://www.youtube.com/embed/VIDEO_ID_3" frameborder="0" allow="accelerometer; autoplay;
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+break;
+default:
+videoDisplay.innerHTML = 'No videos available';
+}
+}
+function displayAudio(artist) {
+var audioDisplay = document.getElementById('audio-display');
+audioDisplay.innerHTML = '';
+switch(artist) {
+case 'artist1':
+audioDisplay.innerHTML = '<audio controls><source src="audio/artist1_audio.mp3"
+type="audio/mp3">Your browser does not support the audio element.</audio>';
+break;
+case 'artist2':
+audioDisplay.innerHTML = '<audio controls><source src="audio/artist2_audio.mp3"
+type="audio/mp3">Your browser does not support the audio element.</audio>';
+break;
+case 'artist3':
+audioDisplay.innerHTML = '<audio controls><source src="audio/artist3_audio.mp3"
+type="audio/mp3">Your browser does not support the audio element.</audio>';
+break;
+default:
+audioDisplay.innerHTML = 'No audio available';
+}
+}
+</script>
+</body>
+</html>
+________________________________________________________________________________________________________________________________
+_____________________________________________________________________________________________________________________
+3. Create Website Layout in following way:
+layout.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layout</title>
+<link rel="stylesheet" href="layout.css">
+</head>
+<body>
+<div class="layout">
+<div class="logo">
+Logo
+</div>
+<div class="header">
+Header
+</div>
+<div class="side-nav">
+<div class="menu1">
+<h4>Menu 1</h4>
+<div class="sub-menu1">Sub Menu 1</div>
+<div class="sub-menu2">Sub Menu 2</div>
+<div class="sub-menu3">Sub Menu 3</div>
+</div>
+<div class="menu2">
+<h4>Menu 2</h4>
+<div class="sub-menu1">Sub Menu 1</div>
+<div class="sub-menu2">Sub Menu 2</div>
+<div class="sub-menu3">Sub Menu 3</div>
+</div>
+</div>
+<div class="section1">
+<p>Contents</p>
+<div class="images">
+<div>Image 1</div>
+<div>Image 2</div>
+<div>Image 3</div>
+<div>Image 4</div>
+<div>Image 5</div>
+<div>Image 6</div>
+<div>Image 7</div>
+<div>Image 8</div>
+<div>Image 9</div>
+</div>
+</div>
+<div class="section2">
+<p>Contents</p>
+<div class="sections">
+<div>Section 1</div>
+<div>Section 2</div>
+<div>Section 3</div>
+<div>Section 4</div>
+<div>Section 5</div>
+<div>Section 6</div>
+<div>Section 7</div>
+<div>Section 8</div>
+<div>Section 9</div>
+</div>
+</div>
+<div class="footer">
+Footer
+</div>
+</div>
+</body>
+</html>
+layout.css
+.layout {
+display: grid;
+}
+.layout > * {
+border: 1px solid #000;
+padding: 1em;
+}
+.logo {
+grid-column: 1 / 2;
+}
+.header {
+grid-column: 2 / 4;
+text-align: center;
+}
+.side-nav {
+grid-row: 2 / 4;
+}
+.section1 {
+grid-column: 2 / 3;
+}
+.images {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+}
+.images div {
+border: 1px solid #000;
+padding: 0.3em;
+margin: 0.3em;
+text-align: center;
+}
+.section2 {
+grid-column: 3 / 4;
+}
+.sections {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+}
+.sections div {
+border: 1px solid #000;
+padding: 0.3em;
+margin: 0.3em;
+text-align: center;
+}
+.footer {
+grid-column: 2 / 4;
+text-align: center;
+}
+____________________________________________________________________________________________________________________________
+____________________________________________________________________________________________________________________________
+1. Write a PHP script to display employees belongs to Sales department and salary is in between 
+
+<!-- sql code 
+50000 to 90000 and store found records into another table.
+CREATE DATABASE employees_db;
+USE employees_db;
+CREATE TABLE employees (
+employee_id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(100) NOT NULL,
+department VARCHAR(50) NOT NULL,
+salary DECIMAL(10, 2) NOT NULL
+);
+INSERT INTO employees (name, department, salary) VALUES
+('John Doe', 'Sales', 75000.00),
+('Jane Smith', 'Sales', 65000.00),
+('Michael Johnson', 'Marketing', 60000.00),
+('Emily Davis', 'Sales', 80000.00),
+('Chris Wilson', 'HR', 55000.00),
+('Amanda Brown', 'Sales', 90000.00),
+('David Martinez', 'Marketing', 70000.00);
+CREATE TABLE sales_employees (
+employee_id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(100) NOT NULL,
+department VARCHAR(50) NOT NULL,
+salary DECIMAL(10, 2) NOT NULL
+);
+-->
+<?php
+$host = 'localhost';
+$user = 'root';
+$password = '';
+$database = 'employees_db';
+$conn = new mysqli($host, $user, $password, $database);
+if ($conn->connect_error) {
+die('Connection failed.' . $conn->connect_error);
+}
+$select_query = 'SELECT * FROM employees WHERE department = \'Sales\' 
+AND salary BETWEEN 50000 AND 90000';
+$result = $conn->query($select_query);
+if ($result->num_rows > 0) {
+while ($row = $result->fetch_assoc()) {
+$insert_query = "INSERT INTO sales_employees (employee_id, 
+name, department, salary) VALUES ('" . $row["employee_id"] . "', '" . 
+$row["name"] . "', '" . $row["department"] . "', '" . $row["salary"] 
+. "')";
+if ($conn->query($insert_query) === TRUE) {
+echo "Employee ID: " . $row["employee_id"] . ", Name: " . 
+$row["name"] . ", Department: " . $row["department"] . ", Salary: " . 
+$row["salary"] . "<br>";
+} else {
+echo "Error: " . $insert_sql . "<br>" . $conn->error;
+}
+}
+}
+else {
+echo "No records found.";
+}
+$conn->close();
+?>
+<!-- Output:
+Employee ID: 1, Name: John Doe, Department: Sales, Salary: 75000.00
+Employee ID: 2, Name: Jane Smith, Department: Sales, Salary: 65000.00
+Employee ID: 4, Name: Emily Davis, Department: Sales, Salary: 80000.00
+Employee ID: 6, Name: Amanda Brown, Department: Sales, Salary: 90000.00 -->
+_____________________________________________________________________________________________________________
+2. Write a PHP script to design Employee Registration form. Insert 5 records in database and display 
+all the inserted records on new page.
+
+employee_registration.php
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Employee Registration</title>
+</head>
+<body>
+<h2>Employee Registration Form</h2>
+<form action="insert_employee.php" method="post">
+<label for="name">Name:</label><br>
+<input type="text" id="name" name="name" required><br><br>
+<label for="department">Department:</label><br>
+<input type="text" id="department" name="department"
+required><br><br>
+<label for="salary">Salary:</label><br>
+<input type="number" id="salary" name="salary" required><br><br>
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
+
+
+insert_employee.php
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "employees_db";
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+die("Connection failed: " . $conn->connect_error);
+}
+$name = $_POST['name'];
+$department = $_POST['department'];
+$salary = $_POST['salary'];
+$sql = "INSERT INTO employees (name, department, salary) VALUES
+('$name', '$department', '$salary')";
+if ($conn->query($sql) === TRUE) {
+echo "New record created successfully. <br><br>";
+} else {
+echo "Error: " . $sql . "<br>" . $conn->error;
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Inserted Employee Records</title>
+</head>
+<body>
+<h2>Inserted Employee Records</h2>
+<table border="1">
+<tr>
+<th>Name</th>
+<th>Department</th>
+<th>Salary</th>
+</tr>
+<?php
+$sql = "SELECT * FROM employees";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+while ($row = $result->fetch_assoc()) {
+echo "<tr>";
+echo "<td>" . $row["name"] . "</td>";
+echo "<td>" . $row["department"] . "</td>";
+echo "<td>" . $row["salary"] . "</td>";
+echo "</tr>";
+}
+} else {
+echo "<tr><td colspan='3'>No records found</td></tr>";
+}
+?>
+</table>
+</body>
+</html>
+
+______________________________________________________________________________________
+Output:
+3. Write a program to show current date and time using user defined module in Node JS.
+
+datetime.js
+
+function getCurrentDateTime() {
+const currentDate = new Date();
+return currentDate.toLocaleString();
+}
+module.exports = getCurrentDateTime;
+
+script.js
+
+const getCurrentDateTime = require('./datetime');
+const dateTime = getCurrentDateTime();
+console.log('Current Date and Time:', dateTime);
+
+_________________________________________________________________________________________
+
+4. Write a PHP program to store the username in a cookie and check whether the user has
+successfully logged in or not.
+
+login.php
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+$username = $_POST["username"];
+setcookie("username", $username, time() + (86400 * 30), "/");
+header("Location: welcome.php");
+exit();
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+</head>
+<body>
+<h2>Login</h2>
+<form method="post" action="<?php echo 
+htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+Username: <input type="text" name="username">
+<input type="submit" value="Login">
+</form>
+</body>
+</html>
+
+welcome.php
+
+
+<?php
+if(isset($_COOKIE["username"])) {
+$username = $_COOKIE["username"];
+echo "Welcome, $username!";
+} else {
+echo "You are not logged in!";
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Welcome</title>
+</head>
+<body>
+<h2>Welcome</h2>
+<p>
+<?php
+if(isset($_COOKIE["username"])) {
+$username = $_COOKIE["username"];
+echo "Welcome, $username!";
+} else {
+echo "You are not logged in!";
+}
+?>
+</p>
+<p><a href="logout.php">Logout</a></p>
+</body>
+</html>
+
+logout.php
+
+<?php
+setcookie("username", "", time() - 3600, "/");
+header("Location: login.php");
+exit();
+?>
+________________________________________________________________________________________
+
+5. Write a program in NodeJS to perform file CRUD operations by using fs module.
+
+const fs = require('fs');
+function createFile(filename, data) {
+fs.writeFile(filename, data, (err) => {
+if (err) {
+console.error('Error creating file:', err);
+return;
+}
+console.log('File created successfully!');
+});
+}
+function readFile(filename) {
+fs.readFile(filename, 'utf8', (err, data) => {
+if (err) {
+console.error('Error reading file:', err);
+return;
+}
+console.log('File content:', data);
+});
+}
+function updateFile(filename, newData) {
+fs.appendFile(filename, newData, (err) => {
+if (err) {
+console.error('Error updating file:', err);
+return;
+}
+console.log('File updated successfully!');
+});
+}
+function deleteFile(filename) {
+fs.unlink(filename, (err) => {
+if (err) {
+console.error('Error deleting file:', err);
+return;
+}
+console.log('File deleted successfully!');
+});
+}
+const filename = 'example.txt';
+createFile(filename, 'Hello, World!\n');
+readFile(filename);
+updateFile(filename, 'This is an updated line.\n');
+readFile(filename);
+deleteFile(filename);
+_______________________________________________________________________________________________________________________________________________
+6. Create an angular program which will demonstrate the use of ng-switch directive.
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>ngSwitch Example</title>
+<script
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.mi
+n.js"></script>
+</head>
+<body>
+<div ng-app="myApp" ng-controller="MyController">
+<select ng-model="selectedFruit">
+<option value="apple">Apple</option>
+<option value="banana">Banana</option>
+<option value="orange">Orange</option>
+</select>
+<div ng-switch="selectedFruit">
+<p ng-switch-when="apple">You selected Apple</p>
+<p ng-switch-when="banana">You selected Banana</p>
+<p ng-switch-when="orange">You selected Orange</p>
+<p ng-switch-default>Please select a fruit</p>
+</div>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('MyController', function($scope) {
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
