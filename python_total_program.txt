@@ -795,3 +795,119 @@ players_with_more_wickets_than_matches = df.loc[df['Wickets'] >
 df['Matches'], 'Name'].tolist()
 print("\nNames of players whose wickets are greater than matches:",
 players_with_more_wickets_than_matches)
+
+
+1. Write a python program to perform CRUD operations on MongoDB database.
+from pymongo import MongoClient
+client = MongoClient('mongodb://localhost:27017')
+employees_db = client.employees_db
+employee = employees_db.employee
+employee_data = {'ID': 101, 'Name': 'Shivam', 'Age': 27}
+employee.insert_one(employee_data)
+employees_data = [
+{'ID': 102, 'Name': 'Varun', 'Age': 40},
+{'ID': 103, 'Name': 'Akash', 'Age': 21},
+{'ID': 106, 'Name': 'Parth', 'Age': 30},
+{'ID': 105, 'Name': 'Tejas', 'Age': 47},
+{'ID': 106, 'Name': 'Om', 'Age': 30}
+]
+employee.insert_many(employees_data)
+result1 = employee.find_one()
+print(result1)
+results = employee.find()
+for result in results:
+print(result)
+employee.update_one({'ID': 106}, {'$set': {'ID': 104}})
+employee.update_many({'Age': {'$gt': 30}}, {'$set': {'Status':
+'Senior'}})
+employee.update_many({'Age': {'$lt': 30}}, {'$set': {'Status':
+'Junior'}})
+employee.delete_one({'Name': 'Tejas'})
+employee.delete_many({'Age': 30})
+Output:
+{'_id': ObjectId('661056976f30d5efbab1d2a0'), 'ID': 101, 'Name': 'Shivam', 'Age': 27}
+{'_id': ObjectId('661056976f30d5efbab1d2a0'), 'ID': 101, 'Name': 'Shivam', 'Age': 27}
+{'_id': ObjectId('661056976f30d5efbab1d2a1'), 'ID': 102, 'Name': 'Varun', 'Age': 40}
+{'_id': ObjectId('661056976f30d5efbab1d2a2'), 'ID': 103, 'Name': 'Akash', 'Age': 21}
+{'_id': ObjectId('661056976f30d5efbab1d2a3'), 'ID': 106, 'Name': 'Parth', 'Age': 30}
+{'_id': ObjectId('661056976f30d5efbab1d2a4'), 'ID': 105, 'Name': 'Tejas', 'Age': 47}
+{'_id': ObjectId('661056976f30d5efbab1d2a5'), 'ID': 106, 'Name': 'Om', 'Age': 30}
+2. Create a pandas data frame using mtcars.csv file and perform following operations:
+a) Display column names
+b) Display 5th to 10th rows
+c) Display 4th to 7th columns
+d) Display no of rows and no of columns
+import pandas as pd
+df = pd.read_csv('mtcars.csv')
+print("Column names:")
+print(df.columns.tolist())
+print("\n5th to 10th rows:")
+print(df.iloc[4:10])
+print("\n4th to 7th columns:")
+print(df.iloc[:, 3:7])
+num_rows, num_columns = df.shape
+print("\nNumber of rows:", num_rows)
+print("Number of columns:", num_columns)
+3. Use the given file named cricket.csv and perform the following operations:
+1. Read the file in DataFrame
+2. List the name of cricketer and their respective runs
+3. Find total wickets taken by them
+4. Find average of catches taken
+5. Find the name of wicketkeeper
+6. Print the name of bowler who played highest number of matches
+7. Find average of all the bowlers
+8. Find name of the bowler with least bowling average
+9. Draw the bar chart of matches against number of runs scored
+10. Sort and print information about players by ascending order of runs
+11. Print the names of players whose wickets are greater than matches
+import pandas as pd
+import matplotlib.pyplot as plt
+df = pd.read_csv("cricket.csv")
+print(df[['Name', 'Runs']])
+total_wickets = df['Wickets'].sum()
+print("Total wickets taken:", total_wickets)
+average_catches = df['Catches'].mean()
+print("Average catches taken:", average_catches)
+wicketkeeper = df[df['Role'] == 'Wicketkeeper']['Name'].iloc[0]
+print("Wicketkeeper:", wicketkeeper)
+highest_matches_bowler = df[df['Role'] ==
+'Bowler'].sort_values(by='Matches',
+ascending=False).iloc[0]['Name']
+print("Bowler with highest matches played:",
+highest_matches_bowler)
+average_bowlers = df[df['Role'] == 'Bowler']['Runs'].mean()
+print("Average runs scored by bowlers:", average_bowlers)
+least_average_bowler = df[df['Role'] ==
+'Bowler'].sort_values(by='Runs', ascending=True).iloc[0]['Name']
+print("Bowler with least runs:", least_average_bowler)
+plt.bar(df['Matches'], df['Runs'])
+plt.xlabel('Matches')
+plt.ylabel('Runs')
+plt.title('Matches vs Runs Scored')
+plt.show()
+sorted_by_runs = df.sort_values(by='Runs', ascending=True)
+print(sorted_by_runs)
+players_wickets_gt_matches = df[df['Wickets'] >
+df['Matches']]['Name']
+print("Players with wickets greater than matches:",
+list(players_wickets_gt_matches))
+Output:
+Name Runs
+0 Player 1 500
+1 Player 2 600
+2 Player 3 300
+3 Player 4 400
+4 Player 5 700
+Total wickets taken: 58
+Average catches taken: 17.6
+Wicketkeeper: Player 5
+Bowler with highest matches played: Player 4
+Average runs scored by bowlers: 350.0
+Bowler with least runs: Player 3
+Name Runs Wickets Catches Matches Role
+2 Player 3 300 20 10 18 Bowler
+3 Player 4 400 15 18 22 Bowler
+0 Player 1 500 10 15 20 Batsman
+1 Player 2 600 5 20 25 All-rounder
+4 Player 5 700 8 25 30 Wicketkeeper
+Players with wickets greater than matches: ['Player 3']
